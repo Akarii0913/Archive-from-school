@@ -6,6 +6,7 @@
 
 int main(){
     int i,j,k;
+    char file_name[50];
 
     //実行回数
     int num = 30;
@@ -17,6 +18,8 @@ int main(){
     int *data, *heap_data;
     data = (int *)malloc(sizeof(int)*MAX);
     heap_data = (int *)malloc(sizeof(int)*MAX);
+
+    srand((unsigned int)time(NULL));
 
     //バブル,選択,挿入,シェルソートの関数ポインタの配列
     void(*simple_sort[SIMPLE_FUNC_NUM])(int *data) = {
@@ -34,7 +37,8 @@ int main(){
 
     //ファイルのオープン
     FILE *fp;
-    fp = fopen("result_1000.csv", "a+");
+    sprintf(file_name, "result_%d.csv", MAX);
+    fp = fopen(file_name, "a+");
     if(fp == NULL){
         printf("Fail to open this file.\n");
         return 1;
@@ -43,42 +47,42 @@ int main(){
         printf("Success to open this file. \n");
     }
 
-    for(k=0; k<num; k++){
+    for(i=0; i<num; i++){
         //バブル,選択,挿入,シェルソート
-        for(i=0; i<SIMPLE_FUNC_NUM; i++){
+        for(j=0; j<SIMPLE_FUNC_NUM; j++){
             //整列用データの作成
-            for(j=0; j<MAX; j++)
-                srand((unsigned int)time(NULL));
-                data[j] = 0 + rand()%MAX;
+            for(k=0; k<MAX; k++){
+                data[k] = 0 + rand()%MAX;
+            }
 
             start_clock = clock();
-            simple_sort[i](data);
+            simple_sort[j](data);
             end_clock = clock();
             fprintf(fp, "%f,", (double)(end_clock - start_clock)/CLOCKS_PER_SEC*pow(10, 3));
         }
 
         //クイック,マージソート
         int high;
-        for(i=0; i<COMP_FUNC_NUM; i++){
-            if(i == 1)
+        for(j=0; j<COMP_FUNC_NUM; j++){
+            if(j == 1)
                 high = MAX - 1;
             else high = MAX;
 
             //整列用データの作成
-            for(j=0; j<MAX; j++)
-                srand((unsigned int)time(NULL));
-                data[j] = 0 + rand()%MAX;
+            for(k=0; k<MAX; k++){
+                data[k] = 0 + rand()%MAX;
+            }
 
             start_clock = clock();
-            comp_sort[i](data, 0, high);
+            comp_sort[j](data, 0, high);
             end_clock = clock();
             fprintf(fp, "%f,", (double)(end_clock - start_clock)/CLOCKS_PER_SEC*pow(10, 3));
         }
 
         //ヒープソート
         //整列用データの作成
-        for(i=0; i<MAX+1; i++)
-            heap_data[i] = 0 + rand()%MAX;
+        for(j=0; j<MAX+1; j++)
+            heap_data[j] = 0 + rand()%MAX;
 
         start_clock = clock();
         heap_sort(heap_data, MAX);

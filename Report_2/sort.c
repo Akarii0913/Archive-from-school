@@ -98,19 +98,22 @@ void quick_sort(int *data, int first, int last){
 }
 
 void merge_sort(int *data, int low, int high){
-    int mid, i, j, k;
     int *workspace;
     workspace = (int *)malloc(sizeof(int)*MAX);
+    merge_sort_main(data, low, high, workspace);
+    free(workspace);
+}
 
-    high = high - 1;
+void merge_sort_main(int *data, int low, int high, int *workspace){
+    int mid, i, j, k;
 
     if(low >= high)
         return;
 
     mid = (low + high)/2;
 
-    merge_sort(data, low, mid);
-    merge_sort(data, mid+1, high);
+    merge_sort_main(data, low, mid, workspace);
+    merge_sort_main(data, mid+1, high, workspace);
 
     for(i = low; i <= mid; i++)
         workspace[i] = data[i];
@@ -124,8 +127,6 @@ void merge_sort(int *data, int low, int high){
             data[k] = workspace[i++];
         else
             data[k] = workspace[j--];
-
-    free(workspace);
 }
 
 void downheap(int from, int to, int heap_data[]){
