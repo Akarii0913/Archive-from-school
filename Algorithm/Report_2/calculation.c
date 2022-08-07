@@ -52,7 +52,7 @@ int main(){
         for(j=0; j<SIMPLE_FUNC_NUM; j++){
             //整列用データの作成
             for(k=0; k<MAX; k++){
-                data[k] = 0 + rand()%MAX;
+                data[k] = 0 + rand()%1000;
             }
 
             start_clock = clock();
@@ -70,7 +70,7 @@ int main(){
 
             //整列用データの作成
             for(k=0; k<MAX; k++){
-                data[k] = 0 + rand()%MAX;
+                data[k] = 0 + rand()%1000;
             }
 
             start_clock = clock();
@@ -82,7 +82,7 @@ int main(){
         //ヒープソート
         //整列用データの作成
         for(j=0; j<MAX+1; j++)
-            heap_data[j] = 0 + rand()%MAX;
+            heap_data[j] = 0 + rand()%1000;
 
         start_clock = clock();
         heap_sort(heap_data, MAX);

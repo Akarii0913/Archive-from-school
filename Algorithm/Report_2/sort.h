@@ -1,7 +1,7 @@
 #ifndef SORT_H
 #define SORT_H
 
-#define MAX 100000
+#define MAX 10000
 #define SIMPLE_FUNC_NUM 4
 #define COMP_FUNC_NUM 2
 #define FUNC_NUM (SIMPLE_FUNC_NUM + COMP_FUNC_NUM)

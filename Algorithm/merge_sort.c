@@ -5,7 +5,7 @@ void merge_sort(int data[], int low, int high);
 
 int main(void){
     int i;
-    int data[] = {55, 13, 3, 45, 74, 87, 46, 30};
+    c
 
     merge_sort(data, 0, 7);
 

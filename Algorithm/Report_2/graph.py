@@ -22,15 +22,18 @@ exec_time = np.array(exec_time).T
 list = [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000]
 
 plt.style.use('seaborn-dark')
+plt.rcParams["font.family"] = "MS Gothic"
+'''
 plt.plot(list, exec_time[0], label='Bubble')
 plt.plot(list, exec_time[1], label='Selection')
 plt.plot(list, exec_time[2], label='Insertion')
+'''
 plt.plot(list, exec_time[3], label='Shell')
 plt.plot(list, exec_time[4], label='Quick')
 plt.plot(list, exec_time[5], label='Merge')
 plt.plot(list, exec_time[6], label='Heap')
 
-plt.xlabel('Number of executions', fontsize=16)
+plt.xlabel('Elements/times', fontsize=16)
 plt.ylabel('Time required/mS', fontsize=16)
 plt.legend(loc='upper left')
 plt.xlim(0, list[19])
