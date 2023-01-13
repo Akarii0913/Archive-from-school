@@ -1,8 +1,7 @@
 #include <stdio.h>
-extern char calender(char *s, int year);
-char cal[BUFSIZ];
+extern char cal(char *buf, int year);
+char buf[100];
 
 int main(){
-    calender(cal, 2021);
-    printf("%s\n", cal);
+    cal(buf, 2021);
 }
