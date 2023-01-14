@@ -22,3 +22,13 @@ void push(ELEM x){
         error("stack overflow\n");
     stack[n++] = x;
 }
+
+ELEM pop(){
+    if(n <= 0)
+        error("stack underflow\n");
+    return stack[--n];
+}
+
+int empty(){    
+    return n == 0;
+}
