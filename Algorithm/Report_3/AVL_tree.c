@@ -27,6 +27,7 @@ int main(void){
     root = insert(&root, 3);
     root = insert(&root, 2);
     root = insert(&root, 1);
+    
     inorder(root);
     printf("\n");
     preorder(root);
@@ -185,7 +186,7 @@ NODE *rightRotate(NODE **y){
 * @param y 左回転したい部分木の根
 * @return 左回転後の根
 **/
-NODE *leftRotate(NODE **y){ // 実装する
+NODE *leftRotate(NODE **y){ 
     NODE *x, *t;
 
     x = (*y)->right;
